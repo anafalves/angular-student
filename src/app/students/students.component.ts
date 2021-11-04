@@ -7,6 +7,8 @@ import { STUDENTS } from '../mock-students';
 
 
 import { StudentService } from '../student.service';
+import { Observable } from 'rxjs';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-students',
@@ -26,21 +28,30 @@ export class StudentsComponent implements OnInit {
 
   //students = STUDENTS;
 
+  //students: Student[] = [];
+  //students: 
+
+  selectedStudent?: Student
   students: Student[] = [];
-  constructor(private studentService: StudentService) { }
+
+
+  constructor(
+    private studentService: StudentService,
+    private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getStudents();
   }
 
-  selectedStudent?: Student
+
   onSelect(student: Student): void {
     this.selectedStudent = student;
+    this.messageService.add(`StudentsComponent: Selected hero id=${student.id}`);
   }
 
 
-  getStudents(): void {
-    this.students = this.studentService.getStudents();
+  getStudents(): void{
+    this.studentService.getStudents().subscribe(students => this.students = students);
   }
 
 }
