@@ -13,9 +13,13 @@ export class DashboardComponent implements OnInit {
   constructor(private studentService: StudentService) { }
   
   getStudents(): void {
-    this.studentService.getStudents()
-      .subscribe(students => this.students = students.slice(1, 5));
+    this.studentService.getStudents().toPromise().then(student => {
+      console.log("Sucess!");
+      this.students = student.slice(1, 5);
+    }).catch(error => console.log("Error"));
   }
+
+  
   ngOnInit(): void {
     this.getStudents();
   }

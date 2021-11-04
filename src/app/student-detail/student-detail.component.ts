@@ -33,7 +33,10 @@ export class StudentDetailComponent implements OnInit {
   getStudent(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.studentService.getStudent(id)
-      .subscribe(student => this.student = student);
+      .toPromise().then(student => {
+        console.log("Success!");
+        this.student = student;
+      }).catch(error => console.log("Error"));
   }
 
   goBack(): void {
