@@ -29,14 +29,9 @@ export class StudentService {
   // }
 
   getStudent(id: number): Observable<Student> {
-    // For now, assume that a hero with the specified `id` always exists.
-    // Error handling will be added in the next step of the tutorial.
-  //  const student = STUDENTS.find(h => h.id === id)!;
     this.messageService.add(`StudentService: fetched student id=${id}`);
     
-    return this.http.get<Student>(`${this.studentsUrl}/students/{id}`);
-
-
+    return this.http.get<Student>(`${this.studentsUrl}/students/${id}`);
   }
 
 
@@ -64,6 +59,7 @@ export class StudentService {
  * @param operation - name of the operation that failed
  * @param result - optional value to return as the observable result
  */
+/*
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -77,4 +73,5 @@ export class StudentService {
       return of(result as T);
     };
   }
+  */
 }
