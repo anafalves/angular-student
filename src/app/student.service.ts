@@ -17,6 +17,9 @@ export class StudentService {
     private messageService: MessageService,
     private http: HttpClient) { }
 
+
+
+
   getStudent(id: number): Observable<Student> {
     this.messageService.add(`StudentService: fetched student id=${id}`);
 
@@ -35,6 +38,10 @@ export class StudentService {
   }
 
   deleteStudent(id: number) {
+    this.messageService.add(`StudentService: deleted student id=${id}`);
     return this.http.delete<Student>(`${this.studentsUrl}/delete/${id}`);
   }
+
+
+
 }

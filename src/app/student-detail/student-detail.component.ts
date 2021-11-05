@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Student } from '../student';
 import { StudentService } from '../student.service';
+import { MessageService } from '../message.service';
 
 
 @Component({
