@@ -10,7 +10,7 @@ import { StudentDetailComponent } from './student-detail/student-detail.componen
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgModel lives here
 
-import { IssueService } from './issue.service';
+
 
 @NgModule({
   declarations: [
@@ -26,9 +26,7 @@ import { IssueService } from './issue.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [
-    IssueService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

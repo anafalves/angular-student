@@ -1,11 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Student } from '../student';
-
-
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import {StudentService } from '../student.service';
+import { Student } from '../student';
+import { StudentService } from '../student.service';
 
 
 @Component({
@@ -17,7 +15,7 @@ export class StudentDetailComponent implements OnInit {
 
   student: Student | undefined;
 
-  
+
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService,
@@ -34,12 +32,23 @@ export class StudentDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.studentService.getStudent(id)
       .toPromise().then(student => {
-        console.log("Success!");
+        console.log("getStudent Success!");
         this.student = student;
-      }).catch(error => console.log("Error"));
+      }).catch(
+        error => console.log("Error getStudent")
+      );
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  goDelete(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.studentService.deleteStudent(id)
+      .toPromise().then(student => {
+        console.log("Deleted!");
+        this.student = student;
+      }).catch(error => console.log("Error goDelete"));
   }
 }

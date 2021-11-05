@@ -9,6 +9,7 @@ import { Student } from './student';
   providedIn: 'root'
 })
 export class StudentService {
+
   private studentsUrl = `http://localhost:8080/api/students`;  // URL to web api
 
 
@@ -31,5 +32,9 @@ export class StudentService {
   /** Log a StudentService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`StudentService: ${message}`);
+  }
+
+  deleteStudent(id: number) {
+    return this.http.delete<Student>(`${this.studentsUrl}/delete/${id}`);
   }
 }

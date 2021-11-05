@@ -1,10 +1,8 @@
-/* DashboardComponent's private CSS styles */
-
 h2 {
   text-align: center;
 }
 
-.heroes-menu {
+.students-menu {
   padding: 0;
   margin: auto;
   max-width: 1000px;
