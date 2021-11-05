@@ -9,6 +9,9 @@ import { Student } from './student';
   providedIn: 'root'
 })
 export class StudentService {
+  addStudent() {
+    throw new Error('Method not implemented.');
+  }
 
   private studentsUrl = `http://localhost:8080/api/students`;  // URL to web api
 
