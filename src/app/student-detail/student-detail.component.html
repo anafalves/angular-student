@@ -2,11 +2,18 @@
   <h2>{{student.name | uppercase}} Details</h2>
   <div><span>id: </span>{{student.id}}</div>
   <div><span>age: </span>{{student.age}}</div>
-  <div><span>email: </span>{{student.email}}</div>
+  
+  <div>
+    <label for="student-email">student email</label>
+    <input id="student-email" [(ngModel)]="student.email" placeholder="student email" />
+  </div>
+
   <div>
     <label for="student-name">student name: </label>
     <input id="student-name" [(ngModel)]="student.name" placeholder="student name" />
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="goDelete()">remove</button>
+
+  <button (click)="goBack()">Go Back</button>
+  <button (click)="goDelete()">Remove</button>
+  <button (click)="goUpdate(student)">Update</button>
 </div>

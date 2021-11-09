@@ -44,7 +44,7 @@ export class ModaldistributerComponent implements OnInit {
 
 
 
-
+//TODO: use a decent date field thingy
   onSubmit(): void {
 
 

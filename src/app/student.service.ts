@@ -39,16 +39,11 @@ export class StudentService {
     this.messageService.add(`StudentService: ${message}`);
   }
 
+    /** DELETE students from the server */
   deleteStudent(id: number) {
     this.messageService.add(`StudentService: deleted student id=${id}`);
     return this.http.delete<Student>(`${this.studentsUrl}/delete/${id}`);
   }
-
-
-
-
-
-  //addStudent(student: Student): Observable<any> {
 
   addStudent(student: Student): Observable<any> {
     student.age=-1;
@@ -60,6 +55,19 @@ export class StudentService {
 
 
     return  this.http.post<Student>(`${this.studentsUrl}`, student);
+  }
+
+  /** UPDATE students from the server */
+  updateStudent(student: Student): Observable<any> {
+    
+    student.age=-1;
+    student.dob="2021-02-03";
+
+
+    this.messageService.add(`StudentService: updated student id=${student.id}`);
+
+
+    return  this.http.put<Student>(`${this.studentsUrl}/update`, student); 
   }
 
 }

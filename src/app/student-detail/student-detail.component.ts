@@ -28,6 +28,8 @@ export class StudentDetailComponent implements OnInit {
     this.getStudent();
   }
 
+
+  
   getStudent(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.studentService.getStudent(id)
@@ -39,10 +41,14 @@ export class StudentDetailComponent implements OnInit {
       );
   }
 
+
+  
   goBack(): void {
     this.location.back();
   }
 
+
+  
   goDelete(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.studentService.deleteStudent(id)
@@ -50,5 +56,19 @@ export class StudentDetailComponent implements OnInit {
         console.log("Deleted!");
         this.student = student;
       }).catch(error => console.log("Error goDelete"));
+  }
+
+
+
+  goUpdate(student: Student): void{
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log("email: "+student.email);
+    
+    this.studentService.updateStudent(student)
+      .toPromise().then(student => {
+        console.log("Updated!");
+        this.student = student;
+      }).catch(error => console.log("Error goUpdate"));
+
   }
 }
