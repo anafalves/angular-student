@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { StudentsComponent } from './students/students.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
-//import { ModalModule } from './_modal';
-//import { ModalComponent } from './modal/modal.component';
 import { ModaldistributerComponent } from './modaldistributer/modaldistributer.component';
 
 
@@ -14,8 +12,6 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: StudentDetailComponent },
   { path: 'students', component: StudentsComponent },
-  //{ path: 'add', component: ModalComponent }
- // { path: 'add', component: ModalModule }
   { path: 'add', component: ModaldistributerComponent }
 ];
 

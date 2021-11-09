@@ -37,10 +37,6 @@ export class DashboardComponent implements OnInit {
         button.setAttribute('data-target', '#addStudentModal');
       }
 
-      // if(mode === 'edit'){
-      //   button.setAttribute('data-target', '#editStudentModal');
-      // }
-
   }
 
 

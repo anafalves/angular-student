@@ -11,7 +11,6 @@ import { Student } from './student';
 })
 export class StudentService {
 
-
   private studentsUrl = `http://localhost:8080/api/students`;  // URL to web api
 
 
@@ -34,10 +33,6 @@ export class StudentService {
     return this.http.get<Student[]>(`${this.studentsUrl}/students`);
   }
 
-  /** Log a StudentService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`StudentService: ${message}`);
-  }
 
     /** DELETE students from the server */
   deleteStudent(id: number) {
@@ -45,6 +40,8 @@ export class StudentService {
     return this.http.delete<Student>(`${this.studentsUrl}/delete/${id}`);
   }
 
+
+  /** POST students to the server */
   addStudent(student: Student): Observable<any> {
     student.age=-1;
     student.id=-1;
@@ -53,21 +50,24 @@ export class StudentService {
     console.warn('Your order has been submitted', student);
     this.messageService.add(`StudentService: added student email=${student.email}`);
 
-
     return  this.http.post<Student>(`${this.studentsUrl}`, student);
   }
 
+
   /** UPDATE students from the server */
   updateStudent(student: Student): Observable<any> {
-    
     student.age=-1;
     student.dob="2021-02-03";
 
-
     this.messageService.add(`StudentService: updated student id=${student.id}`);
-
 
     return  this.http.put<Student>(`${this.studentsUrl}/update`, student); 
   }
 
+
+
+  /** Log a StudentService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`StudentService: ${message}`);
+  }
 }
