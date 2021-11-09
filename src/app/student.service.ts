@@ -5,13 +5,12 @@ import { MessageService } from './message.service';
 import { Student } from './student';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
-  addStudent() {
-    throw new Error('Method not implemented.');
-  }
+
 
   private studentsUrl = `http://localhost:8080/api/students`;  // URL to web api
 
@@ -46,5 +45,21 @@ export class StudentService {
   }
 
 
+
+
+
+  //addStudent(student: Student): Observable<any> {
+
+  addStudent(student: Student): Observable<any> {
+    student.age=-1;
+    student.id=-1;
+    student.dob="2021-02-03";
+    
+    console.warn('Your order has been submitted', student);
+    this.messageService.add(`StudentService: added student email=${student.email}`);
+
+
+    return  this.http.post<Student>(`${this.studentsUrl}`, student);
+  }
 
 }
