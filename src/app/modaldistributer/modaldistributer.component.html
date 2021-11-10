@@ -1,11 +1,11 @@
-<p>modaldistributer works!</p>
-<button (click)="modalService.open('modal-1');">Open modal</button>
+<button (click)="modalService.open('modal-1');">Add another student</button>
 
 
 <jw-modal id="modal-1">
   <h2>Add student</h2>
 
   <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
     <div>
       <label for="name">
         Name
@@ -28,15 +28,9 @@
     </div>
 
 
-
     <button class="button" type="submit">Submit</button>
 
-    <!-- <button (click)="modalService.add('modal-1');">Save</button> -->
   </form>
-
-
-
-
 
   <button (click)="modalService.close('modal-1');">Close</button>
 </jw-modal>

@@ -7,7 +7,6 @@ import { Student } from '../student';
 
 
 
-
 @Component({
   selector: 'app-modaldistributer',
   templateUrl: './modaldistributer.component.html',
