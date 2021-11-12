@@ -13,7 +13,13 @@ export class DashboardComponent implements OnInit {
   students: Student[] = [];
 
   constructor(private studentService: StudentService) { }
-  
+
+
+  ngOnInit(): void {
+    this.getStudents();
+  }
+
+
   getStudents(): void {
     this.studentService.getStudents().toPromise().then(student => {
       console.log("Sucess!");
@@ -21,21 +27,16 @@ export class DashboardComponent implements OnInit {
     }).catch(error => console.log("Error"));
   }
 
-  
-  ngOnInit(): void {
-    this.getStudents();
-  }
+  public onOpenModal(student: Student, mode: string): void {
 
-  public onOpenModal(student: Student, mode: string) : void{
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
 
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.style.display = 'none';
-      button.setAttribute('data-toggle', 'modal');
-
-      if(mode === 'add'){
-        button.setAttribute('data-target', '#addStudentModal');
-      }
+    if (mode === 'add') {
+      button.setAttribute('data-target', '#addStudentModal');
+    }
 
   }
 

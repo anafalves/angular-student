@@ -7,21 +7,19 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {CalendarModule} from 'primeng/calendar';
+
 //PrimeNG
-import { CalendarComponent } from './calendar/calendar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-//self-made // based on angular tutorial
+//stolen from a guy >: D
+import { ModalModule } from './_modal';
+
+//self-made - based on angular official tutorial
 import { StudentsComponent } from './students/students.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModaldistributerComponent } from './modaldistributer/modaldistributer.component';
-
-//stolen from a guy >: D
-import { ModalModule } from './_modal';
-
-
 
 
 
@@ -33,7 +31,6 @@ import { ModalModule } from './_modal';
     StudentDetailComponent,
     MessagesComponent,
     ModaldistributerComponent,
-    CalendarComponent,   
   ],
   imports: [
     BrowserModule,
