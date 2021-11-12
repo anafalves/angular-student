@@ -29,7 +29,29 @@
 
     <div class="p-field p-col-12 p-md-4">
       <label for="dateformat">Date of birth</label>
-      <p-calendar [(ngModel)]="date2" dateFormat="mm-dd-yy" inputId="dateformat" [ngModelOptions]="{standalone: true}">
+
+      <!-- <p-calendar 
+
+      [(ngModel)]="date2" 
+      dateFormat="mm-dd-yy" 
+      
+      inputId="dateformat" 
+      [ngModelOptions]="{standalone: true}"
+    
+      >
+
+      </p-calendar> -->
+
+      <p-calendar 
+
+      [(ngModel)]="date2" 
+      dateFormat="yy-mm-dd" 
+      
+      inputId="dateformat" 
+      [ngModelOptions]="{standalone: true}"
+      dataType="string"
+      >
+
       </p-calendar>
 
       <p>{{date2 | json }} </p>

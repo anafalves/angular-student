@@ -58,7 +58,7 @@ export class StudentService {
     s2.email = student.email; 
     console.log("email:", s2.email);
     s2.dob = student.dob; 
-    console.log("dob: ",s2.dob);
+    console.log("StudentService dob: ",s2.dob);
 
     s2.age = student.age;
     console.log("age:", s2.age);

@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from '../_modal';
-import { FormBuilder /*, FormGroup, FormArray */ } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 import { StudentService } from '../student.service';
 import { Student } from '../student';
-
-import { CompleteStudent } from '../studentComplete';
-import { NewStudent } from '../newStudent';
-
-import { Student2 } from './student2';
-import { ThrowStmt } from '@angular/compiler';
 
 
 
@@ -42,8 +36,6 @@ export class ModaldistributerComponent implements OnInit {
     dateformat: ''
   });
 
-  // private completeStudent!: CompleteStudent;
-
 
   constructor(
     public modalService: ModalService,
@@ -73,48 +65,36 @@ export class ModaldistributerComponent implements OnInit {
   }
 
 
-
-
-  //private student2: Student2 = {} as Student2;
-
   onSubmit(): void {
-    /*
-    this.miniStudent = { ...this.miniStudent, ...this.checkoutForm.value };
-    this.studentService.addStudent(this.miniStudent).toPromise().then(() => {
-      console.log("Success!");
-    }).catch(error => console.log("Error"));
-    this.studentService.addStudent(this.miniStudent);
-    console.warn(this.checkoutForm.value);
-*/
 
-    this.month = this.date2.getMonth() + 1;
-    this.year = this.date2.getFullYear();
-    this.day = this.date2.getDay();
+    // this.month = this.date2.getMonth() + 1;
+    // this.year = this.date2.getFullYear();
+    // this.day = this.date2.getDay();
 
 
-
-
-    this.monthString = (this.date2.getMonth() + 1).toString();
-    console.log("mes", this.monthString);
-    this.yearString = this.date2.getFullYear().toString();
-    console.log("year", this.yearString);
-    this.dayString = this.date2.getDay().toString();
-    console.log("dayString", this.dayString);
+    // this.monthString = (this.date2.getMonth() + 1).toString();
+    // console.log("mes", this.monthString);
+    // this.yearString = this.date2.getFullYear().toString();
+    // console.log("year", this.yearString);
+    // this.dayString = this.date2.getDay().toString();
+    // console.log("dayString", this.dayString);
 
 
     this.miniStudent = { ...this.miniStudent, ...this.checkoutForm };
 
-    if (this.month < 10)
-      this.monthString = '0' + this.monthString;
-    if (this.day < 10)
-      this.dayString = '0' + this.dayString;
+    // if (this.month < 10)
+    //   this.monthString = '0' + this.monthString;
+    // if (this.day < 10)
+    //   this.dayString = '0' + this.dayString;
 
-    console.log("day:" + this.dayString + "\t month:" + this.monthString);
-
-    this.miniStudent.dob = this.yearString + "-" + this.monthString + "-" + this.dayString;
-
-
+    //console.log("day:" + this.dayString + "\t month:" + this.monthString);
+    //this.miniStudent.dob = this.yearString + "-" + this.monthString + "-" + this.dayString;
+    
+    this.miniStudent.dob = this.date2.toString();
     console.log("modal data: ", this.miniStudent.dob);
+
+
+
     this.miniStudent.name = this.checkoutForm.value.name;
     this.miniStudent.email = this.checkoutForm.value.email;
 
