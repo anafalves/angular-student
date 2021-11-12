@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 
 import { StudentService } from '../student.service';
 import { Student } from '../student';
+import { MessageService } from '../message.service';
 
 
 
@@ -28,6 +29,7 @@ export class ModaldistributerComponent implements OnInit {
 
   constructor(
     public modalService: ModalService,
+    public messageService: MessageService,
 
     public studentService: StudentService,
     private formBuilder: FormBuilder
@@ -64,8 +66,13 @@ export class ModaldistributerComponent implements OnInit {
     this.miniStudent.email = this.checkoutForm.value.email;
 
     this.studentService.addStudent(this.miniStudent).toPromise().then(() => {
-      console.log("Success!");
-    }).catch(error => console.log("Error"));
+      console.log("Success onSubmit()!");
+    }).catch(error => this.log("Error onSubmit()"));
+  }
+
+
+  private log (message: string){
+    this.messageService.add("ModaldistributerComponent: ");
   }
 
 

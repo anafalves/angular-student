@@ -1,5 +1,3 @@
-
-
 export interface Student2{
     id: number;
     name: string;

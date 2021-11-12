@@ -21,7 +21,7 @@ export class StudentService {
 
 
   getStudent(id: number): Observable<Student> {
-    this.messageService.add(`StudentService: fetched student id=${id}`);
+    this.log(`fetched student id=${id}`);
 
     return this.http.get<Student>(`${this.studentsUrl}/students/${id}`);
   }
@@ -35,7 +35,7 @@ export class StudentService {
 
   /** DELETE students from the server */
   deleteStudent(id: number) {
-    this.messageService.add(`StudentService: deleted student id=${id}`);
+    this.log(`deleted student id=${id}`);
     return this.http.delete<Student>(`${this.studentsUrl}/delete/${id}`);
   }
 
@@ -43,32 +43,22 @@ export class StudentService {
   /** POST students to the server */
   addStudent(student: Student): Observable<any> {
     let s2 = {} as Studentv2; 
-
     s2.name = student.name;
     s2.email = student.email; 
     s2.dob = student.dob; 
-
     
-    this.messageService.add(`StudentService: added student email=${s2.email}`);
+    this.log(`added student email=${s2.email}`);
 
     return this.http.post<Studentv2>(`${this.studentsUrl}`, s2);
   }
 
 
-
-
-
-
   /** UPDATE students from the server */
   updateStudent(student: Student): Observable<any> {
-    student.age = -1;
-    student.dob = "2021-02-03";
-
-    this.messageService.add(`StudentService: updated student id=${student.id}`);
+    this.log(`updated student id=${student.id}`);
 
     return this.http.put<Student>(`${this.studentsUrl}/update`, student);
   }
-
 
 
   /** Log a StudentService message with the MessageService */

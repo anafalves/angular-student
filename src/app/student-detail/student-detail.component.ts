@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Student } from '../student';
 import { StudentService } from '../student.service';
+import { MessageService } from '../message.service';
 
 
 @Component({
@@ -13,13 +14,14 @@ import { StudentService } from '../student.service';
 })
 export class StudentDetailComponent implements OnInit {
 
-  student: Student | undefined;
+  student: Student = {} as Student;
 
 
   constructor(
     private route: ActivatedRoute,
     private studentService: StudentService,
-    private location: Location
+    private location: Location,
+    private messageService: MessageService
   ) { }
 
 
@@ -29,46 +31,51 @@ export class StudentDetailComponent implements OnInit {
   }
 
 
-  
+
   getStudent(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.studentService.getStudent(id)
       .toPromise().then(student => {
-        console.log("getStudent Success!");
         this.student = student;
       }).catch(
-        error => console.log("Error getStudent")
+        error => this.log("getStudent()")
       );
   }
 
 
-  
+
   goBack(): void {
     this.location.back();
   }
 
 
-  
+
   goDelete(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.studentService.deleteStudent(id)
       .toPromise().then(student => {
-        console.log("Deleted!");
         this.student = student;
-      }).catch(error => console.log("Error goDelete"));
+      }).catch(
+        error => this.log("goDelete()")
+      );
   }
 
 
 
-  goUpdate(student: Student): void{
+  goUpdate(student: Student): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log("email: "+student.email);
-    
+
     this.studentService.updateStudent(student)
       .toPromise().then(student => {
-        console.log("Updated!");
         this.student = student;
-      }).catch(error => console.log("Error goUpdate"));
+      }).catch(
+        error => this.log("goUpdate()") 
+      );
+  }
 
+
+
+  private log (message: string){
+    this.messageService.add("StudentDetailComponent Error: ");
   }
 }
