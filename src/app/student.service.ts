@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Student } from './student';
+import { NewStudent } from './newStudent';
 
 
 
@@ -34,7 +35,7 @@ export class StudentService {
   }
 
 
-    /** DELETE students from the server */
+  /** DELETE students from the server */
   deleteStudent(id: number) {
     this.messageService.add(`StudentService: deleted student id=${id}`);
     return this.http.delete<Student>(`${this.studentsUrl}/delete/${id}`);
@@ -43,25 +44,47 @@ export class StudentService {
 
   /** POST students to the server */
   addStudent(student: Student): Observable<any> {
-    student.age=-1;
-    student.id=-1;
-    student.dob="2021-02-03";
-    
-    console.warn('Your order has been submitted', student);
-    this.messageService.add(`StudentService: added student email=${student.email}`);
 
-    return  this.http.post<Student>(`${this.studentsUrl}`, student);
+    let s2 = {} as Student;
+    console.log(s2.dob);
+
+
+
+    s2.id = student.id; 
+    console.log("id:", s2.id);
+
+    s2.name = student.name;
+    console.log("name:", s2.name);
+    s2.email = student.email; 
+    console.log("email:", s2.email);
+    s2.dob = student.dob; 
+    console.log("dob: ",s2.dob);
+
+    s2.age = student.age;
+    console.log("age:", s2.age);
+
+
+
+    console.log(s2.dob);
+    
+    this.messageService.add(`StudentService: added student email=${s2.email}`);
+
+    return this.http.post<Student>(`${this.studentsUrl}`, s2);
   }
+
+
+
+
 
 
   /** UPDATE students from the server */
   updateStudent(student: Student): Observable<any> {
-    student.age=-1;
-    student.dob="2021-02-03";
+    student.age = -1;
+    student.dob = "2021-02-03";
 
     this.messageService.add(`StudentService: updated student id=${student.id}`);
 
-    return  this.http.put<Student>(`${this.studentsUrl}/update`, student); 
+    return this.http.put<Student>(`${this.studentsUrl}/update`, student);
   }
 
 
