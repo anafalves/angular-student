@@ -17,18 +17,7 @@ export class ModaldistributerComponent implements OnInit {
 
   private miniStudent: Student = {} as Student;
   private date!: string;
-
-
-
   public date2!: Date;
-  private day!: number;
-  private month!: number;
-  private year!: number;
-  private dayString!: string;
-  private monthString!: string;
-  private yearString!: string;
-
-  private datum: Date = {} as Date;
 
   checkoutForm = this.formBuilder.group({
     name: '',
@@ -67,33 +56,9 @@ export class ModaldistributerComponent implements OnInit {
 
   onSubmit(): void {
 
-    // this.month = this.date2.getMonth() + 1;
-    // this.year = this.date2.getFullYear();
-    // this.day = this.date2.getDay();
-
-
-    // this.monthString = (this.date2.getMonth() + 1).toString();
-    // console.log("mes", this.monthString);
-    // this.yearString = this.date2.getFullYear().toString();
-    // console.log("year", this.yearString);
-    // this.dayString = this.date2.getDay().toString();
-    // console.log("dayString", this.dayString);
-
-
     this.miniStudent = { ...this.miniStudent, ...this.checkoutForm };
-
-    // if (this.month < 10)
-    //   this.monthString = '0' + this.monthString;
-    // if (this.day < 10)
-    //   this.dayString = '0' + this.dayString;
-
-    //console.log("day:" + this.dayString + "\t month:" + this.monthString);
-    //this.miniStudent.dob = this.yearString + "-" + this.monthString + "-" + this.dayString;
     
     this.miniStudent.dob = this.date2.toString();
-    console.log("modal data: ", this.miniStudent.dob);
-
-
 
     this.miniStudent.name = this.checkoutForm.value.name;
     this.miniStudent.email = this.checkoutForm.value.email;
@@ -101,7 +66,6 @@ export class ModaldistributerComponent implements OnInit {
     this.studentService.addStudent(this.miniStudent).toPromise().then(() => {
       console.log("Success!");
     }).catch(error => console.log("Error"));
-
   }
 
 

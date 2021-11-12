@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Student } from './student';
-import { NewStudent } from './newStudent';
+import { Studentv2 } from './student_v2';
 
 
 
@@ -18,8 +18,6 @@ export class StudentService {
   constructor(
     private messageService: MessageService,
     private http: HttpClient) { }
-
-
 
 
   getStudent(id: number): Observable<Student> {
@@ -44,32 +42,16 @@ export class StudentService {
 
   /** POST students to the server */
   addStudent(student: Student): Observable<any> {
-
-    let s2 = {} as Student;
-    console.log(s2.dob);
-
-
-
-    s2.id = student.id; 
-    console.log("id:", s2.id);
+    let s2 = {} as Studentv2; 
 
     s2.name = student.name;
-    console.log("name:", s2.name);
     s2.email = student.email; 
-    console.log("email:", s2.email);
     s2.dob = student.dob; 
-    console.log("StudentService dob: ",s2.dob);
 
-    s2.age = student.age;
-    console.log("age:", s2.age);
-
-
-
-    console.log(s2.dob);
     
     this.messageService.add(`StudentService: added student email=${s2.email}`);
 
-    return this.http.post<Student>(`${this.studentsUrl}`, s2);
+    return this.http.post<Studentv2>(`${this.studentsUrl}`, s2);
   }
 
 
